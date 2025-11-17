@@ -1,3 +1,6 @@
 pydantic~=2.12.4
 SQLAlchemy~=2.0.44
 fastapi~=0.121.2
+pandas~=2.3.3
+dotenv~=0.9.9
+python-dotenv~=1.2.1
