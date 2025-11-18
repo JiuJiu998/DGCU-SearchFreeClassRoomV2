@@ -90,13 +90,6 @@ class ScheduleEntry(Base):
     # 关联教室
     room_id = Column(Integer, ForeignKey("rooms.id"), nullable=False)
 
-    # 课程信息
-    course_name = Column(String(255), nullable=True)
-    class_name = Column(String(255), nullable=True)
-
-    # 原始爬取内容存档
-    raw = Column(Text, nullable=True)
-
     section = relationship("Section")
     room = relationship("ClassRoom")
 

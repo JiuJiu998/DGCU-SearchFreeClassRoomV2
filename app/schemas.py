@@ -126,9 +126,6 @@ class ScheduleEntryBase(BaseModel):
     weekday: int
     section_id: int
     room_id: int
-    course_name: Optional[str] = None
-    class_name: Optional[str] = None
-    raw: Optional[str] = None
 
 
 class ScheduleEntryCreate(ScheduleEntryBase):
@@ -140,9 +137,6 @@ class ScheduleEntryUpdate(BaseModel):
     weekday: Optional[int] = None
     section_id: Optional[int] = None
     room_id: Optional[int] = None
-    course_name: Optional[str] = None
-    class_name: Optional[str] = None
-    raw: Optional[str] = None
 
 
 class ScheduleEntry(ScheduleEntryBase, ORMBase):

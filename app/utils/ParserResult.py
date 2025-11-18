@@ -1,3 +1,8 @@
+from typing import List
+
+from app.models import ScheduleEntry
+
+
 class ParserResult:
     building = None
     floor = None
@@ -22,3 +27,19 @@ class ParserResult:
         print("section:", self.section)
         print("week:", self.week)
         print("weekday:", self.weekday)
+
+    def to_dict(self):
+        return {
+            "building": self.building,
+            "floor": self.floor,
+            "room_no": self.room_no,
+            "section": self.section,
+            "week": self.week,
+            "weekday": self.weekday
+        }
+
+    def convert_to_schedules(self):
+        # 转为schedules模型列表
+        results: List[ScheduleEntry] = []
+
+

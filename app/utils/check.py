@@ -1,36 +1,35 @@
 from bs4 import BeautifulSoup
 
-with open("kebiao.html", "r", encoding="utf-8") as f:
-    soup = BeautifulSoup(f, "html.parser")
+def count_theoretical_groups(html_path="kebiao.html"):
+    with open(html_path, "r", encoding="utf-8") as f:
+        soup = BeautifulSoup(f, "html.parser")
 
-week_set = set()
-room_set = set()
+    blocks = soup.find_all("div", class_="kbcontent1")
 
-blocks = soup.find_all("div", class_="kbcontent1")
+    total_groups = 0
+    per_block = []  # 可选：查看每块多少组
 
-for block in blocks:
-    lines = block.get_text("\n", strip=True).split("\n")
+    for block in blocks:
+        text = block.get_text("\n", strip=True)
 
-    for i, line in enumerate(lines):
-        if "周)" in line:
-            week = line.strip()
-            # 下一行必定是 room_no
-            if i + 1 < len(lines):
-                room = lines[i + 1].strip()
-            else:
-                room = None
+        # 基本一组
+        group_count = 1
 
-            week_set.add(week)
-            room_set.add(room)
+        # 每出现一次“-------”就多一组
+        group_count += text.count("-------")
 
-print("-------- 周次格式 --------")
-for w in sorted(week_set):
-    print(repr(w))
+        total_groups += group_count
+        per_block.append(group_count)
 
-print("\n-------- 教室格式 --------")
-for r in sorted(room_set):
-    print(repr(r))
+    print("========== 理论应解析组数统计 ==========")
+    print(f"kbcontent1 块总数：{len(blocks)}")
+    print(f"每块组数：{per_block}")
+    print(f"理论总组数（应生成 ParserResult 数量）：{total_groups}")
+    print("=========================================\n")
 
-print("\n周次格式种类数量：", len(week_set))
-print("教室格式种类数量：", len(room_set))
-print("kbcontent1 总数量：", len(blocks))
+    return total_groups
+
+
+theoretical = count_theoretical_groups("kebiao.html")
+
+print("理论应有数量:", theoretical)
