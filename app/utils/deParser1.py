@@ -93,8 +93,8 @@ def parse_course_table_from_html2(file_path: str) -> List[Dict]:
             weekday_index = index // 6
             section_index = index % 6
 
-            # 解析每个 <div class="kbcontent1">
-            divs = BeautifulSoup(cell.decode_contents(), "html.parser").find_all("div", class_="kbcontent1")
+            # 解析每个 <div class="kbcontent1.py">
+            divs = BeautifulSoup(cell.decode_contents(), "html.parser").find_all("div", class_="kbcontent1.py")
             for div in divs:
                 text = div.get_text(separator="\n").strip()
                 lines = [line.strip() for line in text.splitlines() if line.strip()]

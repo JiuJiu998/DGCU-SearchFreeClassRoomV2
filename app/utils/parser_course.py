@@ -21,7 +21,7 @@ for row in rows:
     if not tds: continue
     cname = tds[0].get_text(strip=True)
     for i, td in enumerate(tds[1:], start=1):
-        divs = td.find_all("div", class_="kbcontent1")
+        divs = td.find_all("div", class_="kbcontent1.py")
         if not divs: continue
         wd = (i - 1) // 6;
         si = (i - 1) % 6

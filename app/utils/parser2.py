@@ -135,9 +135,9 @@ def parse_html(path):
                 td = tds[cell_index]
                 cell_index += 1
 
-                divs = td.find_all("div", class_="kbcontent1")
+                divs = td.find_all("div", class_="kbcontent1.py")
                 for div in divs:
-                    block_html = str(div).replace("<div class=\"kbcontent1\">", "").replace("</div>", "")
+                    block_html = str(div).replace("<div class=\"kbcontent1.py\">", "").replace("</div>", "")
                     results = parse_course_block(block_html, weekday_map[wd], s)
                     all_data.extend(results)
 
