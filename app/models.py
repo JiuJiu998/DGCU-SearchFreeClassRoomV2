@@ -93,13 +93,13 @@ class ScheduleEntry(Base):
     section = relationship("Section")
     room = relationship("ClassRoom")
 
-    # 同一课不可重复 同一节次同一时间同意教室不可能有两个数据
-    __table_args__ = (
-        UniqueConstraint(
-            "week", "weekday", "section_id", "room_id",
-            name="uix_sched_unique"
-        ),
-    )
+    # # 同一课不可重复 同一节次同一时间同意教室不可能有两个数据
+    # __table_args__ = (
+    #     UniqueConstraint(
+    #         "week", "weekday", "section_id", "room_id",
+    #         name="uix_sched_unique"
+    #     ),
+    # )
 
 
 class User(Base):

@@ -35,11 +35,5 @@ class ParserResult:
             "room_no": self.room_no,
             "section": self.section,
             "week": self.week,
-            "weekday": self.weekday
+            "weekday": self.weekday,
         }
-
-    def convert_to_schedules(self):
-        # 转为schedules模型列表
-        results: List[ScheduleEntry] = []
-
-

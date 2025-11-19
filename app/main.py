@@ -5,6 +5,7 @@ from app.database import Base, engine
 from app.routers import admin, public
 
 app = FastAPI()
+app.openapi_schema = None
 Base.metadata.create_all(bind=engine)
 
 app.include_router(public.router)
